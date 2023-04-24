@@ -1,0 +1,10 @@
+:root {
+    --bg-color: #F5F5F5;
+    --primary-color: #2E40AE;
+    --primary-alt: #073FAB;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}

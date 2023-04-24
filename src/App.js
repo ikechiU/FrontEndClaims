@@ -1,9 +1,8 @@
-import './App.css';
-
+import { MotorClaimForm } from "./components/MotorClaimForm";
 function App() {
   return (
     <div className="App">
-      <h1>Sterling Assurance</h1>
+      <MotorClaimForm />
     </div>
   );
 }
