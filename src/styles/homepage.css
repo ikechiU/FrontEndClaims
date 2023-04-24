@@ -46,3 +46,10 @@ ul li {
   width: 100%;
   height: auto;
 }
+
+/* claim section */
+.claims__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+}

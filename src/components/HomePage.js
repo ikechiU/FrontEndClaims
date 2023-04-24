@@ -1,6 +1,7 @@
 import "../styles/homepage.css";
 import logo from "../assets/logo.svg";
-import headerImage from '../assets/header_bg.svg'
+import headerImage from "../assets/header_bg.svg";
+import { data } from "./data";
 
 export const HomePage = () => {
   return (
@@ -22,7 +23,25 @@ export const HomePage = () => {
         </ul>
       </nav>
       <div className="header__section">
-        <img src={headerImage} alt='header-background' className="header__image"/>
+        <img
+          src={headerImage}
+          alt="header-background"
+          className="header__image"
+        />
+      </div>
+      <div className="claims__container">
+        {data.map((item) => {
+          return (
+            <div key={item.id} className="claim">
+              <img src={item.image} alt="" />
+              <p>{item.title}</p>
+              <p>{item.description}</p>
+              <div className="button__div">
+                <button className="claim-btn">Claim</button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
