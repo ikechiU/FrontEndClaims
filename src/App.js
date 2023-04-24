@@ -1,8 +1,11 @@
-import { MotorClaimForm } from "./components/MotorClaimForm";
+import { HomePage } from "./components/HomePage";
+// import { MotorClaimForm } from "./components/MotorClaimForm";
+
 function App() {
   return (
     <div className="App">
-      <MotorClaimForm />
+      <HomePage />
+      {/* <MotorClaimForm /> */}
     </div>
   );
 }
