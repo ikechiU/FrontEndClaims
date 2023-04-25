@@ -71,18 +71,6 @@ export const LoginPage = () => {
     localLogin(logInDetails);
   };
 
-  // showing error message if passwords do not match
-  //   const errorMessage = () => {
-  //     return (
-  //       <div
-  //         className="error__message"
-  //         style={{ display: isError ? "" : "none" }}
-  //       >
-  //         <p>Passwords do not match</p>
-  //       </div>
-  //     );
-  //   };
-
   return (
     <div className="login__container">
       <div className="login__col__left">
@@ -124,13 +112,12 @@ export const LoginPage = () => {
             />
           </div>
           <div className="login__btn__container">
-            <button className="login__btn" onClick={notify}>
-              Login
-            </button>
+            <Link to="/form">
+              <button className="login__btn" onClick={notify}>
+                Login
+              </button>
+            </Link>
           </div>
-          {/* <p>
-            If you dont have account, <Link to="/">register</Link>
-          </p> */}
         </form>
       </div>
     </div>

@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.claim__header__text {
+  height: 72px;
+  font-family: "Inter";
+}
+
+table {
+  font-family: "Inter";
+  border-collapse: collapse;
+  width: 100%;
+  background: #f9fafb;
+  border-bottom: 1px solid #eaecf0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  color: #667085;
+}
