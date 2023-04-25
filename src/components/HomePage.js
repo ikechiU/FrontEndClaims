@@ -2,6 +2,7 @@ import "../styles/homepage.css";
 import logo from "../assets/logo.svg";
 import headerImage from "../assets/header_bg.svg";
 import { data } from "./data";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   return (
@@ -37,7 +38,9 @@ export const HomePage = () => {
               <p className="claim__title">{item.title}</p>
               <p className="claim__desc">{item.description}</p>
               <div className="button__div">
-                <button className="claim-btn">Claim</button>
+                <Link to="login">
+                  <button className="claim-btn">Claim</button>
+                </Link>
               </div>
             </div>
           );

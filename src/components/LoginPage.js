@@ -1,15 +1,14 @@
-// import { useState, useRef } from "react";
-// import { ToastContainer, toast } from "react-toastify";
-// import { useParams, useNavigate } from "react-router-dom";
-// import { notify, notifyError, notifySuccess } from "../notification/Tostify";
-// import { baseURL } from "../api/api";
-// import axios from "axios";
+import { useState, useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { notify, notifyError, notifySuccess } from "../notification/Tostify";
+import { baseURL } from "../api/api";
+import axios from "axios";
 import logo from "../assets/logo.svg";
 import "../styles/loginpage.css";
 
 export const LoginPage = () => {
-    /** 
-//   const loginRef = useRef();
+  const loginRef = useRef();
   const navigate = useNavigate();
   const { organazationId } = useParams();
 
@@ -72,71 +71,66 @@ export const LoginPage = () => {
     localLogin(logInDetails);
   };
 
-// showing error message if passwords do not match
-//   const errorMessage = () => {
-//     return (
-//       <div
-//         className="error__message"
-//         style={{ display: isError ? "" : "none" }}
-//       >
-//         <p>Passwords do not match</p>
-//       </div>
-//     );
-//   };
-
-*/
+  // showing error message if passwords do not match
+  //   const errorMessage = () => {
+  //     return (
+  //       <div
+  //         className="error__message"
+  //         style={{ display: isError ? "" : "none" }}
+  //       >
+  //         <p>Passwords do not match</p>
+  //       </div>
+  //     );
+  //   };
 
   return (
     <div className="login__container">
       <div className="login__col__left">
         <div className="login__left">
           <div className="login__left__image">
-            {/* <CompanyLogo /> */}
             <img src={logo} alt="company-logo" />
           </div>
-
-          {/* <Footer /> */}
         </div>
       </div>
 
       <div className="login__col__right">
-        <form className="login__right" >
+        <form className="login__right" onSubmit={handleSubmit}>
           <div className="messages">
-            {/* <ToastContainer /> */}
+            <ToastContainer />
           </div>
           <h1 className="login__header__text">Welcome back!</h1>
           <div className="social__socials">{/* <SocialLogin /> */}</div>
-          <div className="horizontal">
-            <span>or</span>
-          </div>
+          <div className="horizontal">{/* <span>or</span> */}</div>
           <div className="login__input__container">
             <label htmlFor="email" />
             <input
               type="email"
               name="email"
-            //   value={logInDetails.email}
+              value={logInDetails.email}
               placeholder="Email address"
               className="login__input"
-            //   onChange={handleChanges}
+              onChange={handleChanges}
               required
             />
-
             <label htmlFor="password" />
             <input
               type="password"
               name="password"
-            //   value={logInDetails.password}
+              value={logInDetails.password}
               placeholder="Password"
               className="login__input"
-            //   onChange={handleChanges}
+              onChange={handleChanges}
               required
             />
           </div>
           <div className="login__btn__container">
-            <button className="login__btn" >
+            <button className="login__btn" onClick={notify}>
               Login
             </button>
           </div>
+          {/* <p>
+            If you dont have account, <Link to="/">register</Link>
+          </p> */}
         </form>
       </div>
     </div>
