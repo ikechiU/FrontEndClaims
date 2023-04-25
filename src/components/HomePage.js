@@ -34,8 +34,8 @@ export const HomePage = () => {
           return (
             <div key={item.id} className="claim">
               <img src={item.image} alt="" />
-              <p>{item.title}</p>
-              <p>{item.description}</p>
+              <p className="claim__title">{item.title}</p>
+              <p className="claim__desc">{item.description}</p>
               <div className="button__div">
                 <button className="claim-btn">Claim</button>
               </div>

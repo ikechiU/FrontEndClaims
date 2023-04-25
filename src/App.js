@@ -1,5 +1,5 @@
 import { HomePage } from "./components/HomePage";
-// import { MotorClaimForm } from "./components/MotorClaimForm";
+import { MotorClaimForm } from "./components/MotorClaimForm";
 
 function App() {
   return (
