@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <main class="assurance-body">
+        <h1 class="header-1">Motor insurance Claim</h1>
+        <hr />
+
+        <h2 class="header-2">Policy Owner Details</h2>
+        <form method="POST">
+            <!-- Policy Owner detail -->
+            <fieldset>
+                <label for="policy Number"> Policy Number
+                    <input class="form-input" type="number" id="policy-number" name="policy-number" required>
+                </label>
+
+                <div class="name-section"">
+                    <div class="firstname">
+                        <label for="first_name"> First Name
+                            <input class="form-input" type="text" id="first_name" name="First Name" required>
+                        </label>
+                    </div>
+                    <div class="lastname">
+                        <label for="last_name"> Last Name
+                            <input class="form-input" type="text" id="last_name" name="Last Name" required>
+                        </label>
+                    </div>
+                </div>
+
+                <label for="phone_number"> Phone Number
+                    <input class="form-input" type="number" id="phone_number" name="Phone Number" required>
+                </label>
+
+                <label for="email_address"> Email Address
+                    <input class="form-input" type="email" id="email_address" name="Email Address" required>
+                </label>
+
+                <label for="vehicle_number"> Vehicle Number
+                    <input class="form-input" type="number" id="vehicle_number" name="Vehicle Number" required>
+                </label>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <fieldset>
+                <label for="date_of_incident"> Date of Incident
+                    <input class="form-input" type="date" id="date_of_incident" name="Date of Incident" required>
+                </label>
+
+                <label for="time_of_incident"> Time of Incident
+                    <input class="form-input" type="time"  id="time_of_incident" name="Time of Incident" required>
+                </label>
+
+                <label for="incident_location">Where Did The Incident Happen
+                    <input class="form-input" type="number" id="incident_location" name="Where Did The Incident Happen" required>
+                </label>
+                    
+                <label>
+                    Brief Details of Incident
+                </label>
+
+                <textarea class="incident_details mr-30" rows="6" cols="100" >
+                </textarea>
+    
+                <div>
+                    <label for="file_upload" class="upload_label"> Upload Drivers Licence
+                    </label>
+                    <input class="file_upload" type="file" id="file_upload" name="Where Did The Incident Happen" required > 
+                </div>
+               
+
+
+            </fieldset>
+
+            <hr class="divider" />
+
+            <fieldset>
+                <h2>Documents From Incident</h2>
+                <div>
+                    <label for="file_upload" class="upload_label"> Upload Drivers Licence
+                    </label>
+                    <input class="file_upload" type="file" id="file_upload" name="Where Did The Incident Happen" required > 
+                </div>
+            </fieldset>
+
+            <button class="submit_button">Submit</button>
+
+        </form>
+    </main>
+   
+</body>
+</html>
