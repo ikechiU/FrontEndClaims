@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { notify, notifyError, notifySuccess } from "../notification/Tostify";
-import { baseURL } from "../api/api";
+import { baseURL, baseURLFE } from "../api/api";
 import axios from "axios";
 import logo from "../assets/logo.svg";
 import "../styles/loginpage.css";
@@ -10,7 +10,7 @@ import "../styles/loginpage.css";
 export const LoginPage = () => {
   const loginRef = useRef();
   const navigate = useNavigate();
-  const { organazationId } = useParams();
+  // const { organazationId } = useParams();
 
   const [logInDetails, setlogInDetails] = useState({
     email: "",
@@ -34,19 +34,16 @@ export const LoginPage = () => {
 
   const localLogin = () => {
     axios
-      .post(
-        `${baseURL}/api/v1/${!organazationId ? 0 : organazationId}/login`,
-        logInDetails
-      )
+      .post(`${baseURL}/api/v1/login`, logInDetails)
       .then((res) => {
-        console.log(res.data.payload);
+        console.log(res.data.payload.token);
         console.log(res.data);
 
         // loginRef = loginRef.current.reset();
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.payload.token);
+        localStorage.setItem("role", res.data.payload.role);
         notifySuccess("Login suceessful");
-        localStorage.setItem("organazationId", organazationId);
-        navigate("/");
+        navigate("/form");
         // window.location.href = `${baseURLFE}/hrm/dashboard`;
         displayLoginNotification();
         setIsLoading(false);
@@ -70,6 +67,13 @@ export const LoginPage = () => {
     console.log("testing login");
     localLogin(logInDetails);
   };
+
+  useEffect(() => {
+    // Check if the user is already logged in
+    if (localStorage.getItem("token") === "true") {
+      window.location.href = `${baseURLFE}/form`;
+    }
+  }, []);
 
   return (
     <div className="login__container">
@@ -112,11 +116,9 @@ export const LoginPage = () => {
             />
           </div>
           <div className="login__btn__container">
-            <Link to="/form">
-              <button className="login__btn" onClick={notify}>
-                Login
-              </button>
-            </Link>
+            <button className="login__btn" onClick={notify}>
+              Login
+            </button>
           </div>
         </form>
       </div>

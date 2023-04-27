@@ -2,7 +2,8 @@ import { Route, Routes } from "react-router";
 import { LoginPage } from "./components/LoginPage";
 import { HomePage } from "./components/HomePage";
 import { ClaimBoard } from "./components/ClaimBoard";
-import { MotorClaimForm } from "./components/MotorClaimForm";
+// import { MotorClaimForm } from "./components/MotorClaimForm";
+import { FormPage } from "./components/FormPage";
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/form" element={<MotorClaimForm />} />
-        <Route path="/claim" element={<ClaimBoard />} />
+        <Route path="/form" element={<FormPage />} />
+        <Route path="/claims" element={<ClaimBoard />} />
       </Routes>
     </div>
   );

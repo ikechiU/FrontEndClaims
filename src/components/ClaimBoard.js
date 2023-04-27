@@ -11,6 +11,8 @@ const claimData = [
   },
 ];
 
+const role = localStorage.getItem("role");
+
 export const ClaimBoard = () => {
   return (
     <div>
@@ -35,7 +37,14 @@ export const ClaimBoard = () => {
                 <td>{claim.claimType[0]}</td>
                 <td>{claim.date}</td>
                 <td>{claim.status[0]}</td>
-                <td>{claim.mark}</td>
+
+                {role === "ROLE_SUPER_ADMIN" ? (
+                  <>
+                    <td>{claim.status[0]}</td>
+                  </>
+                ) : (
+                  ""
+                )}
               </>
             );
           })}
