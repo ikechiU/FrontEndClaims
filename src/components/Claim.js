@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export const Claim = ({ claim, role, onClick }) => {
-  const [selected, setSelected] = useState(false); // state for seletced click
-
-  const handleSelected = () => {
-    
-  }
-
+export const Claim = ({
+  claim,
+  role,
+  onClick,
+  handleChange,
+  selectedValue,
+}) => {
   return (
     <div>
       <table>
@@ -31,7 +31,7 @@ export const Claim = ({ claim, role, onClick }) => {
           {role === "ROLE_SUPER_ADMIN" && (
             <>
               <td onClick={onClick}>
-                <select>
+                <select value={selectedValue} onChange={(e) => handleChange(e, claim)}>
                   <option>PENDING</option>
                   <option>UNDER_REVIEW</option>
                   <option>PAID</option>
