@@ -36,7 +36,7 @@ export const FormPage = () => {
     api
       .post("/api/vi/test-claims/file", claimDetails)
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.payload);
         navigate("/claims");
       })
       .catch((err) => {
@@ -199,7 +199,7 @@ export const FormPage = () => {
           <div>
             <label htmlFor="file_upload" className="upload_label">
               {" "}
-              Upload Drivers Licence
+              Add Evidence
             </label>
             <input
               className="file_upload"
@@ -219,7 +219,7 @@ export const FormPage = () => {
           <div>
             <label htmlFor="file_upload" className="upload_label">
               {" "}
-              Upload Drivers Licence
+              Add Evidence
             </label>
             <input
               className="file_upload"

@@ -43,7 +43,7 @@ export const LoginPage = () => {
         localStorage.setItem("token", res.data.payload.token);
         localStorage.setItem("role", res.data.payload.role);
         notifySuccess("Login suceessful");
-        navigate("/form");
+        navigate("/claims");
         // window.location.href = `${baseURLFE}/hrm/dashboard`;
         displayLoginNotification();
         setIsLoading(false);

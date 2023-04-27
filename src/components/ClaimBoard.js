@@ -1,55 +1,64 @@
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { Claim } from "./Claim";
+import api from "../api/api";
 import "../styles/claimboard.css";
 
-const claimData = [
-  {
-    id: "26526278",
-    policyNumber: "567657822",
-    claimType: ["Motor", "House", "Fire"],
-    date: Date.now(),
-    status: ["Approved", "Declined", "Pending"],
-    mark: "...",
-  },
-];
-
-const role = localStorage.getItem("role");
-
 export const ClaimBoard = () => {
+  const navigate = useNavigate();
+  // to get payload from submitted form
+  const [claimData, setClaimData] = useState([]);
+
+  useEffect(() => {
+    if (role === "ROLE_SUPER_ADMIN") {
+      api.get("/api/vi/test-claims").then((res) => {
+        console.log(res.data.payload);
+        setClaimData(res.data.payload);
+      });
+    } else {
+      api.get("/api/vi/test-claims/user").then((res) => {
+        console.log(res.data.payload);
+        setClaimData(res.data.payload);
+      });
+    }
+  }, []);
+
+  const role = localStorage.getItem("role");
+
+  const handleClick = () => {
+    console.log("Clicked");
+  };
+
+  const handleAddClaim = () => {
+    navigate("/form");
+  };
+
+  const handleSelector = () => {
+
+  };
+  
+  const handleUpdateStatus = () => {
+
+  };
+
   return (
     <div>
       <nav>
         <h1 className="claim__header__text">Insurance Claim Board</h1>
+        {role !== "ROLE_SUPER_ADMIN" && (
+          <button onClick={handleAddClaim}>Add Claim</button>
+        )}
       </nav>
-      <table>
-        <tr>
-          <th>Claim ID</th>
-          <th>Policy Number</th>
-          <th>Claim Type</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th></th>
-        </tr>
-        <tr>
-          {claimData.map((claim) => {
-            return (
-              <>
-                <td>{claim.id}</td>
-                <td>{claim.policyNumber}</td>
-                <td>{claim.claimType[0]}</td>
-                <td>{claim.date}</td>
-                <td>{claim.status[0]}</td>
-
-                {role === "ROLE_SUPER_ADMIN" ? (
-                  <>
-                    <td>{claim.status[0]}</td>
-                  </>
-                ) : (
-                  ""
-                )}
-              </>
-            );
-          })}
-        </tr>
-      </table>
+      {claimData.map((claim) => {
+        return (
+          <Claim
+            key={claim.claimNumber}
+            claim={claim}
+            role={role}
+            onClick={handleClick}
+          />
+        );
+      })}
     </div>
   );
 };
