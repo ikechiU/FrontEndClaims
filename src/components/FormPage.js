@@ -28,13 +28,10 @@ export const FormPage = () => {
 
   const handleChangesDate = (e) => {
     e.preventDefault();
-    const formattedDate = moment(e.target.value, "YYYY-MM-DD").format(
-      "DD-MM-YYYY"
-    );
-    console.log(formattedDate);
     setClaimDetails((prev) => ({
       ...prev,
-      [e.target.name]: formattedDate + " 00:00",
+      [e.target.name]:
+        moment(e.target.value, "YYYY-MM-DD").format("DD-MM-YYYY") + " 00:00",
     }));
   };
 
@@ -53,7 +50,6 @@ export const FormPage = () => {
         console.log(err);
         notifyError(err.response.data.message);
         displayLoginNotification();
-        // setResponseStatus(err.response.data.message);
       });
   };
 
@@ -164,12 +160,19 @@ export const FormPage = () => {
           <label htmlFor="date_of_incident">
             {" "}
             Date of Incident
-            <input
-              className="form-input"
-              type="datetime"
+            {/* <input
+              className=""
+              type="text"
               value={claimDetails.dateOfClaim}
+              placeholder="DD-MM-YYYY"
               id="date_of_incident"
               name="dateOfClaim"
+            /> */}
+            <input
+              className="form-input"
+              type="date"
+              name="dateOfClaim"
+              placeholder=""
               onChange={handleChangesDate}
             />
           </label>
@@ -224,23 +227,6 @@ export const FormPage = () => {
         </fieldset>
 
         <hr className="divider" />
-
-        {/* <fieldset>
-          <h2>Documents From Incident</h2>
-          <div>
-            <label htmlFor="file_upload" className="upload_label">
-              {" "}
-              Add Evidence
-            </label>
-            <input
-              className="file_upload"
-              type="file"
-              id="file_upload"
-              name="Where Did The Incident Happen"
-              onChange={handleChanges}
-            />
-          </div>
-        </fieldset> */}
 
         <button className="submit_button">Submit</button>
       </form>
