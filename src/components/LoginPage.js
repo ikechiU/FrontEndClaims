@@ -68,12 +68,12 @@ export const LoginPage = () => {
     localLogin(logInDetails);
   };
 
-  useEffect(() => {
-    // Check if the user is already logged in
-    if (localStorage.getItem("token") === "true") {
-      window.location.href = `${baseURLFE}/form`;
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Check if the user is already logged in
+  //   if (localStorage.getItem("token") === "true") {
+  //     window.location.href = `${baseURLFE}/form`;
+  //   }
+  // }, []);
 
   return (
     <div className="login__container">

@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router";
 import { LoginPage } from "./components/LoginPage";
 import { HomePage } from "./components/HomePage";
 import { ClaimBoard } from "./components/ClaimBoard";
-// import { MotorClaimForm } from "./components/MotorClaimForm";
 import { FormPage } from "./components/FormPage";
 
 function App() {

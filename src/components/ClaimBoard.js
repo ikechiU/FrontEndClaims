@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { notify, notifyError, notifySuccess } from "../notification/Tostify";
-import queryString from "query-string";
+import { useNavigate } from "react-router-dom";
+import { notifyError } from "../notification/Tostify";
 import { Claim } from "./Claim";
 import api from "../api/api";
 import "../styles/claimboard.css";
@@ -9,9 +8,10 @@ import "../styles/claimboard.css";
 export const ClaimBoard = () => {
   const navigate = useNavigate();
 
-  // to get payload from submitted form
   const [claimData, setClaimData] = useState([]);
   const [select, setSelect] = useState("PENDING");
+
+  const role = localStorage.getItem("role");
 
   useEffect(() => {
     if (role === "ROLE_SUPER_ADMIN") {
@@ -37,9 +37,7 @@ export const ClaimBoard = () => {
           notifyError(err.response.data.message);
         });
     }
-  }, []);
-
-  const role = localStorage.getItem("role");
+  }, [role]);
 
   const handleClick = () => {
     console.log("Clicked");
@@ -54,16 +52,18 @@ export const ClaimBoard = () => {
     const theSelectedValule = e.target.value;
     if (select !== theSelectedValule) {
       handleUpdateStatus(theSelectedValule, claim);
+    } else {
+      handleUpdateStatus();
     }
   };
 
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate("/");
+  };
+
   const handleUpdateStatus = (theSelectedValule, claim) => {
-    console.log(theSelectedValule);
-    console.log(claim.claimNumber);
-    const obj = {
-      claimStatus: theSelectedValule,
-    };
-    const queryParams = queryString.stringify({ obj });
     api
       .post(
         `/api/vi/test-claims/${
@@ -73,6 +73,7 @@ export const ClaimBoard = () => {
       .then((res) => {
         console.log(res.data.payload);
         window.location.reload();
+        navigate("/claims");
       })
       .catch((err) => {
         console.log(err);
@@ -84,9 +85,19 @@ export const ClaimBoard = () => {
     <div>
       <nav>
         <h1 className="claim__header__text">Insurance Claim Board</h1>
-        {role !== "ROLE_SUPER_ADMIN" && (
-          <button onClick={handleAddClaim}>Add Claim</button>
-        )}
+
+        <div>
+          {role !== "ROLE_SUPER_ADMIN" && (
+            <>
+              <button className="add-claim-btn" onClick={handleAddClaim}>
+                Add Claim
+              </button>
+            </>
+          )}
+          <button onClick={handleLogOut} className="logout">
+            Logout
+          </button>
+        </div>
       </nav>
       {claimData.map((claim) => {
         return (
