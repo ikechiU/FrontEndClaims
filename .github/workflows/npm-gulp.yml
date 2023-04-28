@@ -40,4 +40,4 @@ jobs:
       uses: docker/build-push-action@v4
       with:
           push: true
-          tags: dhamed007 / sterlingassurancedemo_frontend
+          tags: dhamed007/sterlingassurancedemo_frontend
