@@ -10,7 +10,6 @@ import "../styles/loginpage.css";
 export const LoginPage = () => {
   const loginRef = useRef();
   const navigate = useNavigate();
-  // const { organazationId } = useParams();
 
   const [logInDetails, setlogInDetails] = useState({
     email: "",
@@ -67,13 +66,6 @@ export const LoginPage = () => {
     console.log("testing login");
     localLogin(logInDetails);
   };
-
-  // useEffect(() => {
-  //   // Check if the user is already logged in
-  //   if (localStorage.getItem("token") === "true") {
-  //     window.location.href = `${baseURLFE}/form`;
-  //   }
-  // }, []);
 
   return (
     <div className="login__container">

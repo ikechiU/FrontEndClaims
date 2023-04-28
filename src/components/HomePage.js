@@ -2,7 +2,7 @@ import "../styles/homepage.css";
 import logo from "../assets/logo.svg";
 import headerImage from "../assets/header_bg.svg";
 import { data } from "./data";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const HomePage = () => {
   return (
@@ -20,6 +20,9 @@ export const HomePage = () => {
           <li>INSURANCE</li>
           <li>CLAIMS</li>
           <li>DOWNLOADS</li>
+          <NavLink className='login-link' to="login">
+            <li>LOGIN</li>
+          </NavLink>
           <li>CONTACT</li>
         </ul>
       </nav>

@@ -1,3 +1,7 @@
+.assurance-body {
+  margin: 10% 10%;
+}
+
 .header-2 {
   margin-top: 20px;
 }
@@ -22,13 +26,6 @@ label {
   padding: 0px 20px;
 }
 
-.assurance-body {
-  margin-top: 100px;
-  margin-right: 120px;
-  margin-left: 120px;
-  margin-bottom: 30px;
-}
-
 .firstname {
   display: inline-block;
   width: 45%;
@@ -51,6 +48,11 @@ label {
 }
 .mr-30 {
   margin-bottom: 30px;
+}
+
+.incident_details {
+  padding: 10px 20px;
+  font-family: inherit;
 }
 
 .divider {

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { notify, notifyError, notifySuccess } from "../notification/Tostify";
+import moment from "moment";
 import api from "../api/api";
 import "../styles/formpage.css";
 
@@ -10,7 +11,6 @@ export const FormPage = () => {
 
   const [claimDetails, setClaimDetails] = useState({
     policyNumber: "",
-
     email: "",
     vehicleId: "",
     description: "",
@@ -26,17 +26,17 @@ export const FormPage = () => {
     }));
   };
 
-  // const handleNumericChange = () => {
-
-  //   const numericInput = claimDetails.dateOfClaim.replace(/[^\d]/g, "");
-  //   // format the numeric input as dd/mm/yyyy
-  //   const formattedDate = numericInput
-  //     .replace(/^(\d{2})(\d{2})(\d{4})$/, "$1/$2/$3")
-  //     .replace(/^(\d{2})(\d{2})$/, "$1/$2");
-  //   setClaimDetails(formattedDate);
-  // }
-
- 
+  const handleChangesDate = (e) => {
+    e.preventDefault();
+    const formattedDate = moment(e.target.value, "YYYY-MM-DD").format(
+      "DD-MM-YYYY"
+    );
+    console.log(formattedDate);
+    setClaimDetails((prev) => ({
+      ...prev,
+      [e.target.name]: formattedDate + " 00:00",
+    }));
+  };
 
   const displayLoginNotification = () => {
     toast.success("Successful");
@@ -60,7 +60,8 @@ export const FormPage = () => {
   // function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("testing login");
+
+    console.log(claimDetails);
     claimInsurance(claimDetails);
     console.log(claimDetails.dateOfClaim);
   };
@@ -165,12 +166,11 @@ export const FormPage = () => {
             Date of Incident
             <input
               className="form-input"
-              type="text"
+              type="datetime"
               value={claimDetails.dateOfClaim}
-              // onInput={formattedDate}
               id="date_of_incident"
               name="dateOfClaim"
-              onChange={handleChanges}
+              onChange={handleChangesDate}
             />
           </label>
           {/* 
@@ -217,8 +217,7 @@ export const FormPage = () => {
               className="file_upload"
               type="file"
               value={claimDetails.files}
-              id="file_upload"
-              name="Where Did The Incident Happen"
+              name="files"
               onChange={handleChanges}
             />
           </div>

@@ -53,7 +53,7 @@ export const ClaimBoard = () => {
     if (select !== theSelectedValule) {
       handleUpdateStatus(theSelectedValule, claim);
     } else {
-      handleUpdateStatus();
+      handleUpdateStatus(theSelectedValule, claim);
     }
   };
 

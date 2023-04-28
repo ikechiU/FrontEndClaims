@@ -37,6 +37,16 @@ ul li {
   cursor: pointer;
 }
 
+.login-link {
+  list-style-type: none;
+  color: white;
+  text-decoration: none;
+}
+
+li:hover {
+  color: aqua;
+}
+
 /* header background */
 .header__section {
   margin-top: 5rem;
@@ -45,7 +55,6 @@ ul li {
 .header__section img {
   width: 100%;
   height: auto;
-  /* object-fit: contain; */
 }
 
 /* claim section */
