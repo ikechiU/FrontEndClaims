@@ -160,14 +160,6 @@ export const FormPage = () => {
           <label htmlFor="date_of_incident">
             {" "}
             Date of Incident
-            {/* <input
-              className=""
-              type="text"
-              value={claimDetails.dateOfClaim}
-              placeholder="DD-MM-YYYY"
-              id="date_of_incident"
-              name="dateOfClaim"
-            /> */}
             <input
               className="form-input"
               type="date"
@@ -176,18 +168,6 @@ export const FormPage = () => {
               onChange={handleChangesDate}
             />
           </label>
-          {/* 
-          <label htmlFor="time_of_incident">
-            {" "}
-            Time of Incident
-            <input
-              className="form-input"
-              type="time"
-              id="time_of_incident"
-              name="Time of Incident"
-              onChange={handleChanges}
-            />
-          </label> */}
 
           <label htmlFor="incident_location">
             Where Did The Incident Happen
