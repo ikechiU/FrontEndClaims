@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { baseURL } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { notifyError } from "../notification/Tostify";
 import { Claim } from "./Claim";
@@ -16,7 +17,7 @@ export const ClaimBoard = () => {
   useEffect(() => {
     if (role === "ROLE_SUPER_ADMIN") {
       api
-        .get("/api/vi/test-claims")
+        .get(`${baseURL}/api/vi/test-claims`)
         .then((res) => {
           console.log(res.data.payload);
           setClaimData(res.data.payload);
@@ -27,7 +28,7 @@ export const ClaimBoard = () => {
         });
     } else {
       api
-        .get("/api/vi/test-claims/user")
+        .get(`${baseURL}/api/vi/test-claims/user`)
         .then((res) => {
           console.log(res.data.payload);
           setClaimData(res.data.payload);
@@ -37,6 +38,7 @@ export const ClaimBoard = () => {
           notifyError(err.response.data.message);
         });
     }
+    
   }, [role]);
 
   const handleClick = () => {

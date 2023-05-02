@@ -15,4 +15,4 @@ endPoint.interceptors.request.use((config) => {
 export default endPoint;
 export const baseURL =
   "http://ec2-204-236-204-199.compute-1.amazonaws.com:8085";
-export const baseURLFE = "http://localhost:3000";
+export const baseURLFE = "http://frontend.crore100.com/";
