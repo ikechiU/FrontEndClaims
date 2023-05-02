@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const endPoint = axios.create({ baseURL: process.env.React_App_backendCall });
+const endPoint = axios.create({
+  baseURL: "http://ec2-204-236-204-199.compute-1.amazonaws.com:8085",
+});
 const token = localStorage.getItem("token");
 endPoint.interceptors.request.use((config) => {
   if (token) {
@@ -11,5 +13,6 @@ endPoint.interceptors.request.use((config) => {
   return config;
 });
 export default endPoint;
-export const baseURL =  process.env.React_App_backendCall
-export const baseURLFE = process.env.React_App_FrontendCall;
+export const baseURL =
+  "http://ec2-204-236-204-199.compute-1.amazonaws.com:8085";
+export const baseURLFE = "http://localhost:3000";
