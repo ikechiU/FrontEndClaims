@@ -32,12 +32,12 @@ export const LoginPage = () => {
   };
 
   const localLogin = () => {
+    setIsLoading('Loading...')
     axios
       .post(`${baseURL}/api/v1/login`, logInDetails)
       .then((res) => {
         console.log(res.data.payload.token);
         console.log(res.data);
-
         // loginRef = loginRef.current.reset();
         localStorage.setItem("token", res.data.payload.token);
         localStorage.setItem("role", res.data.payload.role);
@@ -49,9 +49,14 @@ export const LoginPage = () => {
       })
       .catch((err) => {
         console.log(err);
-        notifyError(err.response.data.message);
-        setResponseStatus(err.response.data.message);
-        setIsLoading(false);
+        console.log(err.message);
+        if (err.message === "Network Error") {
+          notifyError("Network Error");
+        } else {
+          notifyError(err.response.data.message);
+          setResponseStatus(err.response.data.message);
+          setIsLoading(false);
+        }
       });
   };
 
